@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Grid, TextField, Paper, Button} from '@material-ui/core'
 
+
 const UserForm = props =>{
     const initialFormState = {
         firstName:'',
@@ -9,7 +10,7 @@ const UserForm = props =>{
         age:'',
         hobby:''
     }
-    const [user, setUser] =useState(initialFormState)
+    const [user, setUser] = useState(initialFormState)
 
     const handleInput= ({target}) =>{
         const {name, value} = target
@@ -20,7 +21,13 @@ const UserForm = props =>{
         e.preventDefault()
         if(user.firstName && user.lastName && user.birthday && user.age && user.hobby){
             setUser(initialFormState)
-            return props.addUser(user)
+            props.onSubmit({
+                firstName: user.firstName,
+                lastName: user.lastName,
+                birthday: user.birthday,
+                age: user.age,
+                hobby: user.hobby
+              })
         }
     }
     return(

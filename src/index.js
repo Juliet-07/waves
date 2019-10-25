@@ -1,11 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Tan from './Challenge'
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Tan from './components/Challenge'
+import Store from './store/Store'
+import {Provider} from 'react-redux'
 
-ReactDOM.render(<Tan/>, document.getElementById('root'));
+const store = Store()
+
+// console.log(store.getState())
+
+const redux = (
+    <Provider store={store}><Tan/></Provider>
+)
+
+ReactDOM.render(redux, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
